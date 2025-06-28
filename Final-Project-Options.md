@@ -1,3 +1,7 @@
+#Election Results
+##Thanks for voting, Team 9! Option 5 received 3 votes; Option 3 got 1 vote, and all other options received 0 votes. Therefore, we will move forward with **Option 5 On-Chain Market Inventory: Create a decentralized inventory system for tracking market goods on-chain** as our final project. Let’s get started!
+
+
 # Project Ideas for Team 9 - Encode Solana Bootcamp (Q2 2025)
 
 The following table outlines proposed project ideas for Team 9's final project in the Encode Solana Bootcamp (Q2 2025). Team members are encouraged to review the options and vote for their preferred project.
@@ -14,5 +18,3 @@ The following table outlines proposed project ideas for Team 9's final project i
 
 Please review the proposals and cast your vote in the **Team 9 Discord chat**. **The voting deadline is Thursday, June 26, 2025, at the end of the BootCamp class.**
 
-Election Results
-Thanks for voting, Team 9! Option 5 received 3 votes; Option 3 got 1 vote, and all other options received 0 votes. Therefore, we will move forward with **Option 5 On-Chain Market Inventory: Create a decentralized inventory system for tracking market goods on-chain** as our final project. Let’s get started!
