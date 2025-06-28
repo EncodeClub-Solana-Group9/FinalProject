@@ -1,5 +1,5 @@
-#Election Results
-##Thanks for voting, Team 9! Option 5 received 3 votes; Option 3 got 1 vote, and all other options received 0 votes. Therefore, we will move forward with **Option 5 On-Chain Market Inventory: Create a decentralized inventory system for tracking market goods on-chain** as our final project. Let’s get started!
+Election Results
+Thanks for voting, Team 9! Option 5 received 3 votes; Option 3 got 1 vote, and all other options received 0 votes. Therefore, we will move forward with **Option 5 On-Chain Market Inventory: Create a decentralized inventory system for tracking market goods on-chain** as our final project. Let’s get started!
 
 
 # Project Ideas for Team 9 - Encode Solana Bootcamp (Q2 2025)
