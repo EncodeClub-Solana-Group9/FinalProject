@@ -204,6 +204,7 @@ export default function DashboardFeature() {
           ?.filter((a) => a.account.listItem)
           .map((item) => (
             <ItemCard
+              key={item.account.name + item.account.seller.toBase58()}
               disableButtons={loading}
               name={item.account.name}
               description={item.account.description}

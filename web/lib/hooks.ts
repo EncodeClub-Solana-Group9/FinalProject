@@ -18,18 +18,6 @@ export function getMockWallet(): AnchorWallet {
   };
 }
 
-export function getAnchorProvider(wallet: AnchorWallet) {
-  if (!process.env.NEXT_PUBLIC_CLUSTER_URL) {
-    throw new Error('NEXT_PUBLIC_CLUSTER_URL is undefined');
-  }
-
-  return new anchor.AnchorProvider(
-    new anchor.web3.Connection(process.env.NEXT_PUBLIC_CLUSTER_URL),
-    wallet,
-    { preflightCommitment: 'recent', commitment: 'processed' }
-  );
-}
-
 export function useSolanaProgram(cluster: string = 'devnet') {
   const wallet = useAnchorWallet();
   const { connection } = useConnection();

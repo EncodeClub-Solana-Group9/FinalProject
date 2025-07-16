@@ -31,7 +31,7 @@ export const defaultClusters: Cluster[] = [
   },
   {
     name: 'mainnet',
-    endpoint: clusterApiUrl('mainnet-beta'),
+    endpoint: process.env.NEXT_PUBLIC_CLUSTER_URL_MAINNET ?? '',
     network: ClusterNetwork.Mainnet,
   },
 ];

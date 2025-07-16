@@ -57,7 +57,7 @@ export const AnimatedDropdown: React.FC<DropdownProps> = ({
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
           >
-            {options.map((option) => (
+            {options.map((option, index) => (
               <li key={option}>
                 <button
                   type="button"
@@ -65,7 +65,9 @@ export const AnimatedDropdown: React.FC<DropdownProps> = ({
                     onSelect(option);
                     settingIsOpen(false);
                   }}
-                  className="w-full border-b cursor-pointer text-gray-900 dark:text-white  text-left px-4 py-2 dark:hover:text-black hover:bg-blue-100 transition"
+                  className={`w-full ${
+                    index !== options?.length - 1 ? 'border-b' : ''
+                  } cursor-pointer text-gray-900 dark:text-white  text-left px-4 py-2 dark:hover:text-black hover:bg-blue-100 transition`}
                 >
                   {option}
                 </button>

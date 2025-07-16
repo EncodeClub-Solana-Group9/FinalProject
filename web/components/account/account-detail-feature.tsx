@@ -137,6 +137,7 @@ export default function AccountDetailFeature() {
         <div className="grid grid-cols-4 gap-4 px-[30px] py-[20px]">
           {items?.map((item) => (
             <ItemCard
+              key={item.account.name + item.account.seller.toBase58()}
               disableButtons={loading}
               name={item.account.name}
               description={item.account.description}
