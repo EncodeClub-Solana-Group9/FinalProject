@@ -12,6 +12,7 @@ import { useAnchorProvider } from '../solana/solana-provider';
 const programId = new PublicKey('FWBtGhuFU9xbXQbcGEJxDfQZckUTm8RMS55YiG1jDtdr');
 
 export default function DashboardFeature() {
+  const { publicKey, connected } = useWallet();
   const { wallet } = useWallet();
   const provider = useAnchorProvider();
   const { program } = useMarketplaceProgram();
@@ -23,10 +24,7 @@ export default function DashboardFeature() {
     sellerPublicKey?: PublicKey
   ) {
     try {
-      const sellerPublicKey = new PublicKey(
-        'FSPp88cxV3it1KUBh6ex5hiEj2sNh55vuSZLY2Ma92V1'
-      );
-      // Generate the PDA for the item account
+      const sellerPublicKey = new PublicKey(publicKey?.toBase58() ?? '');
       const [itemPda] = PublicKey.findProgramAddressSync(
         [Buffer.from('item'), sellerPublicKey.toBuffer(), Buffer.from('heyy')],
         programId
