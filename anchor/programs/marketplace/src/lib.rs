@@ -43,7 +43,7 @@ pub mod marketplace {
         ctx.accounts.seller.to_account_info(),
       ]
     )?;
-
+    item.list_item = false;
     item.seller = ctx.accounts.buyer.key();
     Ok(())
   }
