@@ -18,11 +18,11 @@ export function useMarketplaceProgram() {
   const { connection } = useConnection();
   const { cluster } = useCluster();
   const transactionToast = useTransactionToast();
-  const provider = useAnchorProvider();
   const programId = useMemo(
     () => getMarketplaceProgramId(cluster.network as Cluster),
     [cluster]
   );
+  const provider = useAnchorProvider();
   const program = getMarketplaceProgram(provider);
 
   const accounts = useQuery({

@@ -20,7 +20,7 @@ export function getMarketplaceProgramId(cluster: Cluster) {
   switch (cluster) {
     case 'devnet':
     case 'testnet':
-      return new PublicKey('6BrWXuQJLxmC4VENhUoG3pkrG6FeKGsHw6jyVn9UbCNQ');
+      return new PublicKey('FWBtGhuFU9xbXQbcGEJxDfQZckUTm8RMS55YiG1jDtdr');
     case 'mainnet-beta':
     default:
       return COUNTER_PROGRAM_ID;
