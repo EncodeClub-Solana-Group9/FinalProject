@@ -1,38 +1,42 @@
 'use client';
 
-import { AppHero } from '../ui/ui-layout';
-
-const links: { label: string; href: string }[] = [
-  { label: 'Solana Docs', href: 'https://docs.solana.com/' },
-  { label: 'Solana Faucet', href: 'https://faucet.solana.com/' },
-  { label: 'Solana Cookbook', href: 'https://solanacookbook.com/' },
-  { label: 'Solana Stack Overflow', href: 'https://solana.stackexchange.com/' },
-  {
-    label: 'Solana Developers GitHub',
-    href: 'https://github.com/solana-developers/',
-  },
-];
+import { PublicKey } from '@solana/web3.js';
+import { ItemCard } from '../ui/ItemCard';
+import { useWallet } from '@solana/wallet-adapter-react';
+import { TokenSwapCard } from '../ui/Swap';
 
 export default function DashboardFeature() {
+  const { wallet } = useWallet();
   return (
-    <div>
-      <AppHero title="gm" subtitle="Say hi to your new Solana dApp." />
-      <div className="max-w-xl mx-auto py-6 sm:px-6 lg:px-8 text-center">
-        <div className="space-y-2">
-          <p>Here are some helpful links to get you started.</p>
-          {links.map((link, index) => (
-            <div key={index}>
-              <a
-                href={link.href}
-                className="link"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {link.label}
-              </a>
-            </div>
-          ))}
-        </div>
+    <div className="w-full">
+      <p className="text-center my-5">SuperSol Marketplace</p>
+      <div className="grid grid-cols-4 gap-4 px-[30px] py-[20px]">
+        <ItemCard
+          name="Sword of Power"
+          description="A legendary sword that grants great strength."
+          price={1_500_000_000} // 1.5 SOL
+          listed={true}
+          seller={new PublicKey('9Z6WhWUf2GxsAy4sUs1s1HyKTNJe1wCjaAXT2X8fs555')}
+          currentUser={
+            new PublicKey('9Z6WhWUf2GxsAy4sUs1s1HyKTNJe1wCjaAXT2X8fs555')
+          }
+          onBuy={() => {}}
+          onUnlist={() => {}}
+          onRelist={() => {}}
+        />
+        <ItemCard
+          name="Sword of Power"
+          description="A legendary sword that grants great strength."
+          price={1_500_000_000} // 1.5 SOL
+          listed={true}
+          seller={new PublicKey('9Z6WhWUf2GxsAy4sUs1s1HyKTNJe1wCjaAXT2X8fs555')}
+          currentUser={
+            new PublicKey('9Z6WhWUf2GxsAy4sUs1s1HyKTNJe1wCjaAXT2X8fs555')
+          }
+          onBuy={() => {}}
+          onUnlist={() => {}}
+          onRelist={() => {}}
+        />
       </div>
     </div>
   );

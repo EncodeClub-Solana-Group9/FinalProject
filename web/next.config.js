@@ -7,6 +7,9 @@ const { composePlugins, withNx } = require('@nx/next');
  * @type {import('@nx/next/plugins/with-nx').WithNxOptions}
  **/
 const nextConfig = {
+  images: {
+    domains: ['source.unsplash.com', 'api.dicebear.com'],  // Add the domain here
+  },
   webpack: (config) => {
     config.externals = [
       ...(config.externals || []),
