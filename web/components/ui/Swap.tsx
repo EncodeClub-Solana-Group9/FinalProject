@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { TokenInfo } from '@solana/spl-token-registry';
 import { cn } from '@/lib/utils'; // optional: classNames helper
+import { AnimatedDropdown } from './AnimatedDropdown';
 
 interface TokenSwapCardProps {
   fromToken: TokenInfo | null;
@@ -33,12 +34,13 @@ export const TokenSwapCard: FC<TokenSwapCardProps> = ({
       <div className="mb-4">
         <label className="text-gray-600 text-sm">From</label>
         <div className="flex items-center bg-gray-100 rounded-xl px-4 py-3 mt-1">
-          <button
-            onClick={onSelectFrom}
-            className="bg-indigo-600 text-white text-sm px-3 py-1 rounded-lg font-semibold mr-3 hover:bg-indigo-700 transition"
-          >
-            {fromToken?.symbol || 'Select'}
-          </button>
+          <AnimatedDropdown
+            loading={loading}
+            label={fromToken?.symbol || 'Select'}
+            options={['SOL', 'USDT', 'USDC']}
+            onSelect={(e) => {}}
+            customClassName="w-[100%] md:w-[80%]"
+          />
           <input
             type="number"
             placeholder="0.0"
@@ -73,12 +75,13 @@ export const TokenSwapCard: FC<TokenSwapCardProps> = ({
       <div className="mb-4">
         <label className="text-gray-600 text-sm">To</label>
         <div className="flex items-center bg-gray-100 rounded-xl px-4 py-3 mt-1">
-          <button
-            onClick={onSelectTo}
-            className="bg-indigo-600 text-white text-sm px-3 py-1 rounded-lg font-semibold mr-3 hover:bg-indigo-700 transition"
-          >
-            {toToken?.symbol || 'Select'}
-          </button>
+          <AnimatedDropdown
+            loading={loading}
+            label={toToken?.symbol || 'Select'}
+            options={['SOL', 'USDT', 'USDC']}
+            onSelect={(e) => {}}
+            customClassName="w-[100%] md:w-[80%]"
+          />
           <input
             type="text"
             readOnly
