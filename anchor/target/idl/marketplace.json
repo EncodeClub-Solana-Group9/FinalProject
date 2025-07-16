@@ -60,6 +60,58 @@
           "address": "11111111111111111111111111111111"
         }
       ],
+      "args": [
+        {
+          "name": "_name",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "close_item",
+      "discriminator": [
+        232,
+        80,
+        56,
+        56,
+        194,
+        171,
+        176,
+        235
+      ],
+      "accounts": [
+        {
+          "name": "item",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  105,
+                  116,
+                  101,
+                  109
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "seller"
+              },
+              {
+                "kind": "account",
+                "path": "item.name",
+                "account": "Item"
+              }
+            ]
+          }
+        },
+        {
+          "name": "seller",
+          "writable": true,
+          "signer": true
+        }
+      ],
       "args": []
     },
     {
@@ -171,6 +223,10 @@
       ],
       "args": [
         {
+          "name": "_name",
+          "type": "string"
+        },
+        {
           "name": "list_item",
           "type": "bool"
         },
@@ -254,6 +310,10 @@
           {
             "name": "bump",
             "type": "u8"
+          },
+          {
+            "name": "listed_at",
+            "type": "i64"
           }
         ]
       }

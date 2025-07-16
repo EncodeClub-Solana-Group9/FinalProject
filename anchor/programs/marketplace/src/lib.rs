@@ -22,10 +22,11 @@ pub mod marketplace {
     item.price = price;
     item.list_item = true;
     item.bump = ctx.bumps.item;
+    item.listed_at = Clock::get()?.unix_timestamp;
     Ok(())
   }
 
-  pub fn buy_item(ctx: Context<BuyItem>) -> Result<()> {
+  pub fn buy_item(ctx: Context<BuyItem>, _name: String) -> Result<()> {
     let item = &mut ctx.accounts.item;
     require!(item.list_item, MarketplaceError::NotListed);
     require_keys_neq!(ctx.accounts.buyer.key(), item.seller, MarketplaceError::SellerCannotBuy);
@@ -48,18 +49,27 @@ pub mod marketplace {
   }
 
   pub fn set_listing_status(
-    ctx: Context<SetListingStatus>, 
+    ctx: Context<SetListingStatus>,
+    _name: String, 
     list_item: bool,
     new_price: Option<u64>,
   ) -> Result<()> {
     let item = &mut ctx.accounts.item;
-    require_keys_neq!(item.seller, ctx.accounts.seller.key(), MarketplaceError::Unauthorized);
+    require_keys_eq!(item.seller, ctx.accounts.seller.key(), MarketplaceError::Unauthorized);
 
     item.list_item = list_item;
 
     if let Some(price) = new_price {
       item.price = price;
     }
+
+    Ok(())
+  }
+
+  pub fn close_item(ctx: Context<CloseItem>) -> Result<()> {
+    let item = &mut ctx.accounts.item;
+
+    require_keys_eq!(item.seller, ctx.accounts.seller.key(), MarketplaceError::Unauthorized);
 
     Ok(())
   }
@@ -112,6 +122,20 @@ pub struct ListItem<'info> {
   pub system_program: Program<'info, System>,
 }
 
+#[derive(Accounts)]
+pub struct CloseItem<'info> {
+  #[account(
+    mut,
+    seeds = [b"item", seller.key().as_ref(), item.name.as_bytes()],
+    bump = item.bump,
+    close = seller
+  )]
+  pub item: Account<'info, Item>,
+
+  #[account(mut)]
+  pub seller: Signer<'info>,
+}
+
 #[account]
 #[derive(InitSpace)]
 pub struct Item {
@@ -124,6 +148,7 @@ pub struct Item {
   #[max_len(256)]
   pub description: String,
   pub bump: u8,
+  pub listed_at: i64,
 }
 
 #[error_code]

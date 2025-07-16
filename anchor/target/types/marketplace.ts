@@ -66,6 +66,58 @@ export type Marketplace = {
           "address": "11111111111111111111111111111111"
         }
       ],
+      "args": [
+        {
+          "name": "name",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "closeItem",
+      "discriminator": [
+        232,
+        80,
+        56,
+        56,
+        194,
+        171,
+        176,
+        235
+      ],
+      "accounts": [
+        {
+          "name": "item",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  105,
+                  116,
+                  101,
+                  109
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "seller"
+              },
+              {
+                "kind": "account",
+                "path": "item.name",
+                "account": "item"
+              }
+            ]
+          }
+        },
+        {
+          "name": "seller",
+          "writable": true,
+          "signer": true
+        }
+      ],
       "args": []
     },
     {
@@ -177,6 +229,10 @@ export type Marketplace = {
       ],
       "args": [
         {
+          "name": "name",
+          "type": "string"
+        },
+        {
           "name": "listItem",
           "type": "bool"
         },
@@ -260,6 +316,10 @@ export type Marketplace = {
           {
             "name": "bump",
             "type": "u8"
+          },
+          {
+            "name": "listedAt",
+            "type": "i64"
           }
         ]
       }

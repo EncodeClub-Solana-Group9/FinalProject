@@ -3,6 +3,7 @@ import { UiLayout } from '@/components/ui/ui-layout';
 import { ClusterProvider } from '@/components/cluster/cluster-data-access';
 import { SolanaProvider } from '@/components/solana/solana-provider';
 import { ReactQueryProvider } from './react-query-provider';
+import { Toaster } from 'sonner';
 
 export const metadata = {
   title: 'encode-club-final-project',
@@ -29,6 +30,7 @@ export default function RootLayout({
             </SolanaProvider>
           </ClusterProvider>
         </ReactQueryProvider>
+        <Toaster position="top-center" />
       </body>
     </html>
   );
