@@ -5,13 +5,13 @@ seeds = false
 skip-lint = false
 
 [programs.localnet]
-counter = "6BrWXuQJLxmC4VENhUoG3pkrG6FeKGsHw6jyVn9UbCNQ"
+marketplace = "6BrWXuQJLxmC4VENhUoG3pkrG6FeKGsHw6jyVn9UbCNQ"
 
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "Localnet"
+cluster = "localnet"
 wallet = "~/.config/solana/id.json"
 
 [scripts]

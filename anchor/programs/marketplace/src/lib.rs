@@ -1,12 +1,17 @@
-#![allow(clippy::result_large_err)]
-
 use anchor_lang::prelude::*;
 
 declare_id!("6BrWXuQJLxmC4VENhUoG3pkrG6FeKGsHw6jyVn9UbCNQ");
 
 #[program]
 pub mod marketplace {
-  pub fn list_item(ctx: Context<ListItem>, name: String, description: String, price: u64) -> Result<()> {
+  use super::*;
+
+  pub fn list_item(
+    ctx: Context<ListItem>, 
+    name: String, 
+    description: String, 
+    price: u64
+  ) -> Result<()> {
     require!(name.len() <= 32, MarketplaceError::NameTooLong);
     require!(description.len() <= 256, MarketplaceError::DescriptionTooLong);
 
@@ -16,7 +21,7 @@ pub mod marketplace {
     item.description = description;
     item.price = price;
     item.list_item = true;
-    item.bump = *ctx.bumps.get("item").unwrap();
+    item.bump = ctx.bumps.item;
     Ok(())
   }
 
@@ -61,6 +66,7 @@ pub mod marketplace {
 }
 
 #[derive(Accounts)]
+#[instruction(name: String)]
 pub struct BuyItem<'info> {
   #[account(
     mut,
@@ -70,6 +76,7 @@ pub struct BuyItem<'info> {
   pub item: Account<'info, Item>,
   #[account(mut)]
   pub buyer: Signer<'info>,
+  /// CHECK: This is the seller's wallet. We don’t need to validate any data here.
   #[account(mut)]
   pub seller: AccountInfo<'info>,
   pub system_program: Program<'info, System>,
@@ -84,6 +91,7 @@ pub struct SetListingStatus<'info> {
     bump = item.bump
   )]
   pub item: Account<'info, Item>,
+  /// CHECK: This is the seller's wallet. We don’t need to validate any data here.
   pub seller: Signer<'info>
 }
 
@@ -98,6 +106,7 @@ pub struct ListItem<'info> {
     bump
   )]
   pub item: Account<'info, Item>,
+  /// CHECK: This is the seller's wallet. We don’t need to validate any data here.
   #[account(mut)]
   pub seller: Signer<'info>,
   pub system_program: Program<'info, System>,
@@ -106,6 +115,7 @@ pub struct ListItem<'info> {
 #[account]
 #[derive(InitSpace)]
 pub struct Item {
+  /// CHECK: This is the seller's wallet. We don’t need to validate any data here.
   pub seller: Pubkey,
   pub price: u64,
   pub list_item: bool,

@@ -5,12 +5,12 @@ import { useMemo } from 'react';
 import { ellipsify } from '../ui/ui-layout';
 import { ExplorerLink } from '../cluster/cluster-ui';
 import {
-  useCounterProgram,
+  useMarketplaceProgram,
   useCounterProgramAccount,
 } from './counter-data-access';
 
 export function CounterCreate() {
-  const { initialize } = useCounterProgram();
+  const { initialize } = useMarketplaceProgram();
 
   return (
     <button
@@ -24,7 +24,7 @@ export function CounterCreate() {
 }
 
 export function CounterList() {
-  const { accounts, getProgramAccount } = useCounterProgram();
+  const { accounts, getProgramAccount } = useMarketplaceProgram();
 
   if (getProgramAccount.isLoading) {
     return <span className="loading loading-spinner loading-lg"></span>;

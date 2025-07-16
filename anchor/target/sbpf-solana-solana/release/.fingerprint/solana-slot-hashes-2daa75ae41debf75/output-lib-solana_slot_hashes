@@ -1,0 +1,2 @@
+Error: Function _ZN4core5slice4sort6stable14driftsort_main17hd0c4381c5cad1a69E Stack offset of 4104 exceeded max offset of 4096 by 8 bytes, please minimize large stack variables. Estimated function frame size: 4160 bytes. Exceeding the maximum stack offset may cause undefined behavior during execution.
+
