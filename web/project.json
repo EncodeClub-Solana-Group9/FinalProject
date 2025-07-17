@@ -10,7 +10,8 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/web"
+        "outputPath": "dist/web",
+        "assets": ["web/public"]
       },
       "configurations": {
         "development": {

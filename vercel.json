@@ -1,4 +1,4 @@
 {
-  "buildCommand": "npm run build",
+  "buildCommand": "npx nx build web --prod",
   "outputDirectory": "dist/web/.next"
 }
