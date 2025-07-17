@@ -37,7 +37,7 @@ export default function DashboardFeature() {
         [Buffer.from('item'), sellerPublicKey.toBuffer(), Buffer.from(name)],
         programId
       );
-      await program?.methods
+      await (program as any)?.methods
         .listItem(
           name,
           description,
@@ -95,7 +95,7 @@ export default function DashboardFeature() {
         [Buffer.from('item'), sellerPublicKey.toBuffer(), Buffer.from(name)],
         programId
       );
-      await program?.methods
+      await (program as any)?.methods
         .setListingStatus(name, listItem, new anchor.BN(parseFloat(price)))
         .accounts({
           item: itemPda,
@@ -140,7 +140,7 @@ export default function DashboardFeature() {
         [Buffer.from('item'), seller.toBuffer(), Buffer.from(name)],
         programId
       );
-      await program?.methods
+      await (program as any)?.methods
         .buyItem(name)
         .accounts({
           item: itemPda,

@@ -50,7 +50,7 @@ describe('marketplace', () => {
       );
 
       // Call the list_item instruction
-      await program.methods
+      await (program as any).methods
         .listItem(itemName, itemDescription, itemPrice)
         .accounts({
           item: itemPda,
@@ -85,7 +85,7 @@ describe('marketplace', () => {
       );
 
       try {
-        await program.methods
+        await (program as any).methods
           .listItem(longName, itemDescription, itemPrice)
           .accounts({
             item: itemPda,
@@ -117,7 +117,7 @@ describe('marketplace', () => {
       );
 
       try {
-        await program.methods
+        await (program as any).methods
           .listItem(uniqueItemName, longDescription, itemPrice)
           .accounts({
             item: itemPda,

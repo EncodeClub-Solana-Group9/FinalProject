@@ -30,7 +30,7 @@ export default function AccountDetailFeature() {
         [Buffer.from('item'), sellerPublicKey.toBuffer(), Buffer.from(name)],
         programId
       );
-      await program?.methods
+      await (program as any)?.methods
         .closeItem()
         .accounts({
           item: itemPda,
@@ -78,7 +78,7 @@ export default function AccountDetailFeature() {
         [Buffer.from('item'), sellerPublicKey.toBuffer(), Buffer.from(name)],
         programId
       );
-      await program?.methods
+      await (program as any)?.methods
         .setListingStatus(name, listItem, new anchor.BN(parseFloat(price)))
         .accounts({
           item: itemPda,
