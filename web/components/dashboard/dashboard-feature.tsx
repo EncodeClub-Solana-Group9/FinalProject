@@ -88,7 +88,7 @@ export default function DashboardFeature() {
     try {
       setLoading(true);
       const programId = new PublicKey(
-        'FWBtGhuFU9xbXQbcGEJxDfQZckUTm8RMS55YiG1jDtdr'
+        'FWBtGhuFU9xbXQbcGEJxDfQZckUTm8RMS55YiG1jDtdr' // marketplace address on devnet
       );
       const sellerPublicKey = new PublicKey(publicKey?.toBase58() ?? '');
       const [itemPda] = PublicKey.findProgramAddressSync(
