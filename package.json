@@ -8,7 +8,7 @@
     "anchor-localnet": "nx run anchor:anchor localnet",
     "anchor-test": "nx run anchor:anchor test",
     "feature": "nx generate @solana-developers/preset-react:feature",
-    "build": "npx nx build web --prod",
+    "build": "nx build web",
     "dev": "nx serve web"
   },
   "private": true,
