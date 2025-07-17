@@ -135,7 +135,7 @@ export default function AccountDetailFeature() {
       <div className="w-full">
         <p className="text-center my-5">My items</p>
         <div className="grid grid-cols-4 gap-4 px-[30px] py-[20px]">
-          {items?.map((item) => (
+          {items?.map((item: any) => (
             <ItemCard
               key={item.account.name + item.account.seller.toBase58()}
               disableButtons={loading}

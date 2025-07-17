@@ -201,8 +201,8 @@ export default function DashboardFeature() {
       </div>
       <div className="grid grid-cols-4 gap-4 py-[20px]">
         {items
-          ?.filter((a) => a.account.listItem)
-          .map((item) => (
+          ?.filter((a: any) => a.account.listItem)
+          .map((item: any) => (
             <ItemCard
               key={item.account.name + item.account.seller.toBase58()}
               disableButtons={loading}
